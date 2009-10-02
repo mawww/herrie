@@ -124,3 +124,22 @@ size_t vorbis_read(struct audio_file *fd, int16_t *buf, size_t len);
  */
 void vorbis_seek(struct audio_file *fd, int len, int rel);
 #endif /* BUILD_VORBIS */
+
+#ifdef BUILD_MUSEPACK
+/**
+ * @brief Open a Musepack file.
+ */
+int musepack_open(struct audio_file *fd, const char *ext);
+/**
+ * @brief Close and clean up the Musepack file.
+ */
+void musepack_close(struct audio_file* fd);
+/**
+ * @brief Read data from the Musepack file and place it in buf.
+ */
+size_t musepack_read(struct audio_file* fd, int16_t *buf, size_t len);
+/**
+ * @brief Seek a relative amount in seconds in the current file handle.
+ */
+void musepack_seek(struct audio_file* fd, int len, int rel);
+#endif /* BUILD_MUSEPACK */

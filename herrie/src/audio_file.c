@@ -67,6 +67,9 @@ struct audio_format {
  * @brief List of audio formats.
  */
 static struct audio_format formats[] = {
+#ifdef BUILD_MUSEPACK
+	{ musepack_open, musepack_close, musepack_read, musepack_seek },
+#endif /* !BUILD_MUSEPACK */
 #ifdef BUILD_GST
 	{ gst_open, gst_close, gst_read, gst_seek },
 #endif /* !BUILD_GST */

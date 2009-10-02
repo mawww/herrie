@@ -49,6 +49,7 @@ CFG_STRIP=-s
 unset CFG_VOLUME
 CFG_VORBIS=yes
 CFG_XSPF=yes
+CFG_MUSEPACK=yes
 DOIT=@
 
 # Operating system defaults
@@ -144,6 +145,9 @@ do
 	no_vorbis)
 		unset CFG_VORBIS
 		;;
+    no_musepack)
+        unset CFG_MUSEPACK
+        ;;
 	no_xspf)
 		unset CFG_XSPF
 		;;
@@ -308,6 +312,13 @@ then
 	LDFLAGS="$LDFLAGS -lvorbisfile"
 	SRCS="$SRCS audio_format_vorbis"
 fi
+# Musepack support
+if [ "$CFG_MUSEPACK" != "" ]
+then
+	CFLAGS="$CFLAGS -DBUILD_MUSEPACK"
+	LDFLAGS="$LDFLAGS -lmpcdec"
+	SRCS="$SRCS audio_format_musepack"
+fi
 # XSPF support
 if [ "$CFG_XSPF" != "" ]
 then
@@ -386,6 +397,7 @@ echo "- Using $CFG_AO audio output"
 [ "$CFG_SCROBBLER" != "" ] && echo "- Support for AudioScrobbler"
 [ "$CFG_SNDFILE" != "" ] && echo "- Support for libsndfile"
 [ "$CFG_VORBIS" != "" ] && echo "- Support for Ogg Vorbis"
+[ "$CFG_MUSEPACK" != "" ] && echo "- Support for Musepack"
 [ "$CFG_XSPF" != "" ] && echo "- Support for XSPF (\`Spiff')"
 echo
 

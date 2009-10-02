@@ -63,6 +63,7 @@ Herrie:
 - libmodplug (optional)
 - libsndfile (requires 1.0.18, optional)
 - libvorbisfile (optional)
+- libmpcdec (optional)
 - libxspf (optional)
 - ncursesw, ncurses or pdcurses (`XCurses')
 - pulseaudio (optional)
@@ -86,6 +87,7 @@ configure script to change certain parameters:
 - no_scrobbler  Disable AudioScrobbler support
 - no_sndfile    Disable libsndfile linkage (Wave/FLAC support)
 - no_vorbis     Disable Ogg Vorbis support
+- no_musepack   Disable Musepack support
 - no_xspf       Disable XSPF (`Spiff') playlist support
 
 - alsa          Use ALSA audio output
